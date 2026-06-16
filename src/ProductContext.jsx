@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { initialProducts } from './mockData';
 
+/* eslint-disable react-refresh/only-export-components */
 export const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
