@@ -17,19 +17,8 @@ const Catalogue = () => {
           + Ajouter
         </Link>
       </div>
-      <div className="bg-white shadow-sm rounded-xl overflow-hidden border border-gray-100">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
-            <tr>
-              {['Nom', 'Catégorie', 'Prix', 'Stock', ''].map(head => (
-                <th key={head} className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{head}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
-            {products.map(p => <ProductCard key={p.id} product={p} />)}
-          </tbody>
-        </table>
+      <div className="grid grid-cols-3 gap-6">
+        {products.map(p => <ProductCard key={p.id} product={p} />)}
       </div>
     </div>
   );
