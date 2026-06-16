@@ -1,4 +1,7 @@
-export const initialProducts = [
+
+
+
+export const  initialProducts = [
   {
     id: 1,
     name: "MacBook Pro M3",
@@ -7,6 +10,8 @@ export const initialProducts = [
     stock: 12,
     description: "Le plus puissant des laptops Apple."
   },
+
+
   {
     id: 2,
     name: "Logitech MX Master 3S",
