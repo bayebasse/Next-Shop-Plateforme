@@ -53,7 +53,7 @@ const ProductDetail = () => {
               Category / {product.category}
             </span>
             <h1 className="text-4xl font-black text-gray-900 mt-4 leading-tight">{product.name}</h1>
-            <p className="text-3xl font-black text-orange-500 mt-2">{product.price.toLocaleString()} €</p>
+            <p className="text-3xl font-black text-orange-500 mt-2">{Math.floor(product.price).toLocaleString('fr-FR', { maximumFractionDigits: 0 })} CFA</p>
           </div>
 
           <div className="flex-1 space-y-4">
@@ -73,17 +73,17 @@ const ProductDetail = () => {
 
             
           </div>
-          <div className='flex display: flex; w-full justify-between py-4'>
+          <div className="flex w-full gap-4 pt-8">
                 <Link 
                 to={`/modifier/${product.id}`}
-                className="w-[40%] bg-black text-white py-4 rounded-xl font-bold hover:bg-orange-500 transition-all text-center block shadow-lg"
+                className="flex-1 bg-black text-white py-4 rounded-xl font-bold hover:bg-orange-500 transition-all text-center block shadow-lg"
                 >
                 Modifier
                 </Link>
 
             <button
                 onClick={handleDelete}
-                className="w-[40%] cursor-pointer justfy-end bg-red-400 text-white py-4 rounded-xl font-bold hover:bg-red-800 transition-all text-center block shadow-lg"
+                className="flex-1 cursor-pointer bg-red-50 text-red-600 py-4 rounded-xl font-bold hover:bg-red-600 hover:text-white transition-all text-center block border border-red-100 shadow-sm"
             >
                 Supprimer
             </button>

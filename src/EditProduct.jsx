@@ -18,6 +18,38 @@ const EditProduct = () => {
     image: null
   });
   const [preview, setPreview] = useState(null);
+  const [errors, setErrors] = useState({});
+
+  const validate = () => {
+    const newErrors = {};
+    const hasLetter = /[a-zA-ZÀ-ÿ]/;
+
+    if (form.name.trim().length < 3) {
+      newErrors.name = "Le nom doit contenir au moins 3 caractères.";
+    } else if (!hasLetter.test(form.name)) {
+      newErrors.name = "Le nom doit contenir au moins une lettre.";
+    }
+
+    if (!form.price || parseFloat(form.price) <= 0) {
+      newErrors.price = "Le prix doit être supérieur à 0.";
+    } else if (form.price.toString().match(/[.,]/)) {
+      newErrors.price = "Le prix CFA doit être un nombre entier.";
+    }
+
+    if (form.stock === '' || parseInt(form.stock) < 0) newErrors.stock = "Le stock ne peut pas être négatif.";
+    else if (form.stock.toString().match(/[.,]/)) {
+      newErrors.stock = "Le stock doit être un nombre entier.";
+    }
+
+    if (form.description.trim().length < 10) {
+      newErrors.description = "La description doit faire au moins 10 caractères.";
+    } else if (!hasLetter.test(form.description)) {
+      newErrors.description = "La description doit contenir du texte.";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   useEffect(() => {
     if (product) {
@@ -41,12 +73,14 @@ const EditProduct = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    updateProduct({ 
-      ...form, 
-      price: parseFloat(form.price), 
-      stock: parseInt(form.stock) 
-    });
-    navigate(`/produit/${id}`);
+    if (validate()) {
+      updateProduct({ 
+        ...form, 
+        price: parseInt(form.price, 10), 
+        stock: parseInt(form.stock, 10) 
+      });
+      navigate(`/produit/${id}`);
+    }
   };
 
   return (
@@ -62,8 +96,9 @@ const EditProduct = () => {
       <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="space-y-3">
           <label className="block text-base font-black text-black">Nom du produit</label>
-          <input required className="w-full p-3 border-2 border-black rounded-lg focus:ring-4 focus:ring-orange-500 outline-none text-lg"
+          <input className={`w-full p-3 border-2 rounded-lg outline-none text-lg ${errors.name ? 'border-red-500' : 'border-black'}`}
             value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
+          {errors.name && <p className="text-red-500 text-xs font-bold">{errors.name}</p>}
         </div>
         <div className="space-y-3">
           <label className="block text-base font-black text-black">Catégorie</label>
@@ -75,14 +110,16 @@ const EditProduct = () => {
           </select>
         </div>
         <div className="space-y-3">
-          <label className="block text-base font-black text-black">Prix (€)</label>
-          <input type="number" required className="w-full p-3 border-2 border-black rounded-lg text-lg"
+          <label className="block text-base font-black text-black">Prix (CFA)</label>
+          <input type="number" className={`w-full p-3 border-2 rounded-lg text-lg ${errors.price ? 'border-red-500' : 'border-black'}`}
             value={form.price} onChange={(e) => setForm({ ...form, price: e.target.value })} />
+          {errors.price && <p className="text-red-500 text-xs font-bold">{errors.price}</p>}
         </div>
         <div className="space-y-3">
           <label className="block text-base font-black text-black">Stock actuel</label>
-          <input type="number" required className="w-full p-3 border-2 border-black rounded-lg text-lg"
+          <input type="number" className={`w-full p-3 border-2 rounded-lg text-lg ${errors.stock ? 'border-red-500' : 'border-black'}`}
             value={form.stock} onChange={(e) => setForm({ ...form, stock: e.target.value })} />
+          {errors.stock && <p className="text-red-500 text-xs font-bold">{errors.stock}</p>}
         </div>
         <div className="md:col-span-2 space-y-3">
           <label className="block text-base font-black text-black">Image (laisser vide pour conserver l'actuelle)</label>
@@ -93,8 +130,9 @@ const EditProduct = () => {
         </div>
         <div className="md:col-span-2 space-y-3">
           <label className="block text-base font-black text-black">Description détaillée</label>
-          <textarea className="w-full p-3 border-2 border-black rounded-lg h-40 text-lg"
+          <textarea className={`w-full p-3 border-2 rounded-lg h-40 text-lg ${errors.description ? 'border-red-500' : 'border-black'}`}
             value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
+          {errors.description && <p className="text-red-500 text-xs font-bold">{errors.description}</p>}
         </div>
         <button className="md:col-span-2 bg-black text-white py-4 rounded-lg font-black hover:bg-orange-500 transition shadow-lg text-lg">
           Mettre à jour les informations

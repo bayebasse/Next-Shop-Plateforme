@@ -17,7 +17,7 @@ const Dashboard = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <StatCard title="Total Références" value={totalProducts} color="border-orange-500" />
-        <StatCard title="Valeur du Stock" value={`${stockValue.toLocaleString()} €`} color="border-green-500" />
+        <StatCard title="Valeur du Stock" value={`${stockValue.toLocaleString()} CFA`} color="border-green-500" />
         <StatCard title="Alertes Stock" value={lowStock} color="border-red-500" />
       </div>
     </div>

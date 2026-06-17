@@ -14,7 +14,7 @@ const ProductCard = ({ product }) => (
     <div className="p-5 flex flex-col gap-3 flex-1">
       <div className="flex justify-between items-start">
         <h2 className="font-black text-lg text-black leading-tight">{product.name}</h2>
-        <span className="text-orange-500 font-black text-xl">{product.price} €</span>
+        <span className="text-orange-500 font-black text-xl">{product.price.toLocaleString()} CFA</span>
       </div>
       <span className="text-sm font-medium text-gray-500 bg-gray-100 rounded-full px-3 py-1 self-start">
         {product.category}
