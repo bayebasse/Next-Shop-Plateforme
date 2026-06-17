@@ -5,6 +5,7 @@ import Dashboard from './Dashboard';
 import Catalogue from './Catalogue';
 import AddProduct from './AddProduct';
 import ProductDetail from './ProductDetail';
+import EditProduct from './EditProduct';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
                 <Route path="/catalogue" element={<Catalogue />} />
                 <Route path="/ajouter" element={<AddProduct />} />
                 <Route path="/produit/:id" element={<ProductDetail />} />
+                <Route path="/modifier/:id" element={<EditProduct />} />
               </Routes>
             </div>
           </main>
