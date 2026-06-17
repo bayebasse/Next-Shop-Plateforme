@@ -1,4 +1,4 @@
-# 🛒 Next-Shop - Plateforme de Gestion de Stock Moderne
+#  Next-Shop - Plateforme de Gestion de Stock Moderne
 
 ## 1. Présentation du projet
 L'agence digitale Next-Shop a conçu ce back-office moderne pour répondre aux besoins de modernisation d'une chaîne de boutiques locales. Finis les anciens systèmes PHP lents : cette application React offre une expérience **"Zero-Reload"** fluide, permettant de gérer un inventaire de produits (ajout, modification, suppression, consultation) de manière instantanée. L'application met l'accent sur une architecture robuste, une interface épurée et une persistance des données locale.
@@ -8,7 +8,7 @@ Pour installer le projet dans votre environnement local, suivez ces étapes :
 
 1. **Cloner le dépôt :**
    ```bash
-   git clone https://github.com/votre-utilisateur/Next-Shop-Plateforme.git
+   git clone https://github.com/bayebasse/Next-Shop-Plateforme.git
    cd Next-Shop-Plateforme
    ```
 2. **Installer les dépendances :**
@@ -20,6 +20,10 @@ Pour installer le projet dans votre environnement local, suivez ces étapes :
    npm run dev
    ```
 L'application sera accessible sur `http://localhost:5173`.
+
+### Lien de l'application en ligne  
+L'application est également déployée sur Vercel et peut être consultée via le lien suivant : 
+([Next-shop-sur Vercel](https://next-shop-plateforme.vercel.app/))
 
 ## 3. Architecture et Découpage
 L'application suit une structure de composants hiérarchisée, distinguant les **Smart Components** (qui gèrent la logique) des **Dumb Components** (dédiés à l'affichage).
@@ -53,6 +57,9 @@ _______________________________________________________
 |                    |                                 |
 |____________________|_________________________________|
 ```
+### Lien du wireframe sur Balsamiq
+Le wireframe de l'application est également disponible sur Balsamiq :
+([Wireframe Balsamiq](https://balsamiq.cloud/s9u09by/pvrd35y))
 
 ## 6. Pistes de réflexion techniques
 
